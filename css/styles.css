@@ -6,6 +6,22 @@
 body{
   padding-bottom: 500px;
 }
+.none{
+  display: none;
+}
+.header{
+  padding: 1rem 2rem 0;
+}
+.how-to-use{
+  padding: 1rem 2rem;
+}
+#how-to-use-btn{
+  padding: 5px;
+  background-color: #FFF;
+  border: 0.3px solid #000;
+  cursor: pointer;
+
+}
 
 h2{
   margin-bottom: 1.6rem;
@@ -140,6 +156,12 @@ h2{
   font-style: italic;
   margin-top: 1rem;
 }
+
+.footer{
+  padding: 2rem;
+}
+
+
 
 
 /* resposivel */

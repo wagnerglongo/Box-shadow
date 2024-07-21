@@ -140,7 +140,10 @@ const previewBox = document.querySelector("#box");
 const rule = document.querySelector("#rule span");
 const webKitRule = document.querySelector("#webkit-rule span");
 const mozRule = document.querySelector("#moz-rule span");
-// 
+// how-to-use-
+
+const how_to_use_p = document.querySelector(".how-to-use-p");
+const how_to_use_btn = document.querySelector("#how-to-use-btn");
 
 const BoxShadow = new BoxShadowGenerator(
   horizontal,
@@ -205,6 +208,12 @@ inset.addEventListener("input", (e) =>{
   const value = e.target.checked;
 
   BoxShadow.updateValue("inset", value);
+});
+
+how_to_use_btn.addEventListener("click", () => {
+
+  how_to_use_p.classList.toggle("none");
+
 });
 
 
