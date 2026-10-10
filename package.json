@@ -1,0 +1,14 @@
+{
+  "name": "box-shadow-generator",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Editor visual de box-shadow com várias camadas, exportação para CSS e Tailwind e link compartilhável.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

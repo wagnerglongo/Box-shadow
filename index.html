@@ -1,125 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Box Shadow</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <script src="/js/script.js" defer></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5572194744874242" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Box Shadow · Editor visual de sombras CSS</title>
+  <meta name="description" content="Crie sombras CSS com várias camadas, arraste para ajustar e copie o código em CSS ou Tailwind. Compartilhe a configuração por link.">
+  <meta name="theme-color" content="#e9edf2">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Box Shadow · Editor visual de sombras CSS">
+  <meta property="og:description" content="Várias camadas, arrastar para ajustar, exportação para CSS e Tailwind.">
+  <meta property="og:image" content="https://box-shadow.vercel.app/docs/preview.png">
+  <link rel="preload" href="assets/fonts/schibsted-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="src/main.js" type="module"></script>
 </head>
 <body>
-  <div class="header">
-    <h1>Gerador de Box Shadow</h1>
-    <p>Bem-vindo ao nosso gerador de box shadow! Use nossa ferramenta para criar sombras personalizadas para seus elementos de página.</p>
-  </div>
+  <header class="masthead">
+    <h1 class="masthead__title">Box Shadow</h1>
+    <p class="masthead__lead">Monte a sombra em camadas, arraste para ajustar e copie o código.</p>
+    <a class="masthead__link" href="https://github.com/wagnerglongo/Box-shadow">Código no GitHub</a>
+  </header>
 
-  <div class="how-to-use">
-    <!-- <button id="how-to-use-btn">Como Usar</button> -->
-    <p class="how-to-use-p ">Esta ferramenta permite que você ajuste as sombras dos elementos da sua página de forma fácil e rápida. Use os controles deslizantes para ajustar o deslocamento horizontal e vertical, o desfoque, a intensidade do espalhamento e a cor da sombra. Você pode ver o resultado em tempo real na seção de preview. <br> Quando estiver satisfeito com a sombra, copie as regras geradas e cole no seu arquivo CSS.</p>
-  </div>
+  <main class="editor">
+    <aside class="panel" aria-label="Configurações">
+      <section class="panel__group" aria-labelledby="presets-title">
+        <h2 class="panel__title" id="presets-title">Modelos</h2>
+        <div class="presets" id="presets"></div>
+      </section>
 
-  <div id="box-shadow-generator">
-    <div id="controls-container">
-      <h2>Configurações da Box Shadow:</h2>
+      <section class="panel__group" aria-labelledby="layers-title">
+        <div class="panel__row">
+          <h2 class="panel__title" id="layers-title">Camadas</h2>
+          <div class="panel__actions">
+            <button class="icon-button" type="button" id="add-layer" aria-label="Adicionar camada" title="Adicionar camada">+</button>
+            <button class="icon-button" type="button" id="remove-layer" aria-label="Remover camada selecionada" title="Remover camada selecionada">−</button>
+          </div>
+        </div>
+        <div class="layers" id="layers" role="radiogroup" aria-labelledby="layers-title"></div>
+        <div class="fields" id="layer-fields"></div>
+      </section>
 
-      <!-- horizontal -->
-      <div class="form-control">
-        <div class="range-input">
-          <label for="horizontal">Deslocamento horizontal</label>
-          <input type="range" id="horizontal" name="horizontal" min="-100" max="100" value="5" />
-        </div>
-        <div class="reference-input">
-          <input type="text" id="horizontal-value" name="horizontal-value" />
-          <p>px</p>
-        </div>
-      </div>
-      <!-- Vertical -->
-      <div class="form-control">
-        <div class="range-input">
-          <label for="vertical">Deslocamento vertical</label>
-          <input type="range" id="vertical" name="vertical" min="-100" max="100" value="5" />
-        </div>
-        <div class="reference-input">
-          <input type="text" id="vertical-value" name="vertical-value" />
-          <p>px</p>
-        </div>
-      </div>
-      <!-- intensidade do borrao (blur)-->
-      <div class="form-control">
-        <div class="range-input">
-          <label for="blur">Intensidade do borrão (blur)</label>
-          <input type="range" id="blur" name="blur" min="0" max="100" value="10" />
-        </div>
-        <div class="reference-input">
-          <input type="text" id="blur-value" name="blur-value" />
-          <p>px</p>
-        </div>
-      </div>
-      <!-- spread -->
-      <div class="form-control">
-        <div class="range-input">
-          <label for="spread">Intensidade do espalhamento (spread)</label>
-          <input type="range" id="spread" name="spread" min="-100" max="100" value="3" />
-        </div>
-        <div class="reference-input">
-          <input type="text" id="spread-value" name="spread-value" />
-          <p>px</p>
-        </div>
-      </div>
-      <!-- color -->
-      <div class="form-control">
-        <div class="range-input">
-          <label for="color">Cor da sombra</label>
-          <input type="color" id="color" name="color" value="#000" />
-        </div>
-        <div class="reference-input">
-          <input type="text" id="color-value" name="color-value" />
-        </div>
-      </div>
-      <!-- opacity -->
-      <div class="form-control">
-        <div class="range-input">
-          <label for="opacity">Opacidade</label>
-          <input type="range" id="opacity" name="opacity" min="0" max="1" value="1" step="0.01" />
-        </div>
-        <div class="reference-input">
-          <input type="text" id="opacity-value" name="opacity-value" value="1" />
-        </div>
-      </div>
-      <!-- inset -->
-      <div class="form-control">
-        <div class="range-input">
-          <label for="inset">Sombra interna (Inset)?</label>
-          <input type="checkbox" id="inset" name="inset" />
-        </div>
-      </div>
-    </div>
+      <section class="panel__group" aria-labelledby="box-title">
+        <h2 class="panel__title" id="box-title">Caixa e fundo</h2>
+        <div class="fields" id="box-fields"></div>
+      </section>
+    </aside>
 
-    <div id="preview">
-      <h2>Preview do efeito gerado:</h2>
-      <div id="box"></div>
-    </div>
-  </div>
+    <section class="workspace" aria-label="Pré-visualização e código">
+      <div class="stage" id="stage" tabindex="0"
+           aria-label="Pré-visualização. Arraste ou use as setas do teclado para mover a sombra da camada selecionada.">
+        <div class="stage__box" id="box"></div>
+        <p class="stage__hint">Arraste aqui para mover a sombra · setas do teclado também funcionam</p>
+      </div>
 
-  <div id="generated-rule">
-    <h2>Copie e cole no seu arquivo CSS:</h2>
-    <div id="rules-area">
-      <p id="rule">box-shadow: <span></span>;</p>
-      <p id="webkit-rule">-webkit-box-shadow: <span></span>;</p>
-      <p id="moz-rule">-moz-box-shadow: <span></span>;</p>
-    </div>
-    <p id="copy-instruction">Clique no quadro acima para copiar as regras</p>
-  </div>
+      <div class="output">
+        <div class="output__bar">
+          <div class="tabs" role="tablist" aria-label="Formato do código">
+            <button class="tab" role="tab" type="button" id="tab-css" aria-selected="true" aria-controls="code">CSS</button>
+            <button class="tab" role="tab" type="button" id="tab-tailwind" aria-selected="false" aria-controls="code">Tailwind</button>
+          </div>
+          <div class="output__actions">
+            <button class="button" type="button" id="copy-code">Copiar código</button>
+            <button class="button button--quiet" type="button" id="copy-link">Copiar link</button>
+          </div>
+        </div>
+        <pre class="code" id="code" role="tabpanel" tabindex="0"><code></code></pre>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
 
-  <div class="footer">
-    <p>&copy; 2024 Gerador de Box Shadow. Todos os direitos reservados.</p>
-    <nav>
-      <ul>
-        <li><a href="politicas_de_privacidade/politica-de-privacidade.html">Política de Privacidade</a></li>
-        <li><a href="politicas_de_privacidade/termos-de-servico.html">Termos de Serviço</a></li>
-      </ul>
-    </nav>
-  </div>
+  <footer class="footer">
+    <p>Feito por <a href="https://github.com/wagnerglongo">Wagner Longo</a>. HTML, CSS e JavaScript puro, sem dependências.</p>
+  </footer>
 </body>
 </html>
